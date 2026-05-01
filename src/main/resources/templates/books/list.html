@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head('书库 - 在线书屋')"></head>
+<body>
+    <nav th:replace="fragments/layout :: navbar"></nav>
+
+    <main class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3><i class="bi bi-collection"></i> 
+                书库
+                <small class="text-muted" th:if="${keyword}" th:text="| - 搜索: '${keyword}'|"></small>
+                <small class="text-muted" th:if="${category}" th:text="| - ${category}|"></small>
+            </h3>
+            <span class="badge bg-secondary" th:text="|共 ${#lists.size(books)} 本|"></span>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-3 col-6" th:each="book : ${books}">
+                <div class="card h-100 shadow-sm book-card">
+                    <div class="card-img-top bg-light text-center p-4">
+                        <i class="bi bi-book" style="font-size: 4rem; color: #6c757d;"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${book.title}">书名</h5>
+                        <h6 class="card-subtitle mb-2 text-muted" th:text="${book.author}">作者</h6>
+                        <p class="card-text small text-truncate" th:text="${book.description}">描述</p>
+                        <span class="badge bg-info" th:text="${book.category}">分类</span>
+                        <span class="badge bg-secondary ms-1" th:text="|${book.totalChapters} 章|">章节数</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a th:href="@{/books/{id}(id=${book.id})}" class="btn btn-primary w-100 btn-sm">
+                            <i class="bi bi-eye"></i> 查看详情
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${#lists.isEmpty(books)}" class="text-center py-5">
+            <i class="bi bi-emoji-frown" style="font-size: 3rem;"></i>
+            <p class="mt-2 text-muted">暂无书籍</p>
+            <a href="/books" class="btn btn-outline-primary">返回书库</a>
+        </div>
+    </main>
+
+    <footer th:replace="fragments/layout :: footer"></footer>
+</body>
+</html>

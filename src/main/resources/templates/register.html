@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head('注册 - 在线书屋')"></head>
+<body>
+    <nav th:replace="fragments/layout :: navbar"></nav>
+
+    <main class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                        <h3 class="text-center mb-4"><i class="bi bi-person-plus"></i> 用户注册</h3>
+
+                        <div th:if="${error}" class="alert alert-danger">
+                            <i class="bi bi-exclamation-triangle"></i> <span th:text="${error}"></span>
+                        </div>
+
+                        <form th:action="@{/register}" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">用户名</label>
+                                <input type="text" name="username" class="form-control form-control-lg" required minlength="3">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">邮箱</label>
+                                <input type="email" name="email" class="form-control form-control-lg" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">密码</label>
+                                <input type="password" name="password" class="form-control form-control-lg" required minlength="6">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">昵称（可选）</label>
+                                <input type="text" name="displayName" class="form-control form-control-lg">
+                            </div>
+                            <button type="submit" class="btn btn-success w-100 btn-lg">注册</button>
+                        </form>
+
+                        <div class="text-center mt-3">
+                            <span class="text-muted">已有账号？</span>
+                            <a href="/login">立即登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer th:replace="fragments/layout :: footer"></footer>
+</body>
+</html>

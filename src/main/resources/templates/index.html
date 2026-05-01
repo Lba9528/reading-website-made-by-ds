@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout :: head('在线书屋 - 首页')"></head>
+<body>
+    <nav th:replace="fragments/layout :: navbar"></nav>
+
+    <main class="container mt-4">
+        <!-- Hero Section -->
+        <div class="bg-primary text-white rounded-3 p-5 mb-4 shadow-sm">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-4 fw-bold">欢迎来到在线书屋</h1>
+                    <p class="fs-5">海量经典文学作品，随时随地畅享阅读。登录后即可保存阅读进度，不错过每一页精彩。</p>
+                    <a href="/books" class="btn btn-light btn-lg mt-2"><i class="bi bi-book-open"></i> 开始阅读</a>
+                </div>
+                <div class="col-md-4 text-center d-none d-md-block">
+                    <i class="bi bi-journal-richtext" style="font-size: 8rem; opacity: 0.7;"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Quick Links -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h4 class="mb-3"><i class="bi bi-tags"></i> 快速分类</h4>
+            </div>
+            <div class="col-md-2 col-4 mb-2" th:each="cat : ${categories}">
+                <a th:href="@{/books/category/{cat}(cat=${cat})}" class="btn btn-outline-secondary w-100">
+                    <i class="bi bi-bookmark"></i> <span th:text="${cat}"></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Book Grid -->
+        <h4 class="mb-3"><i class="bi bi-collection"></i> 推荐好书</h4>
+        <div class="row g-4">
+            <div class="col-md-3 col-6" th:each="book : ${books}">
+                <div class="card h-100 shadow-sm book-card">
+                    <div class="card-img-top bg-light text-center p-4">
+                        <i class="bi bi-book" style="font-size: 4rem; color: #6c757d;"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${book.title}">书名</h5>
+                        <h6 class="card-subtitle mb-2 text-muted" th:text="${book.author}">作者</h6>
+                        <p class="card-text small text-truncate" th:text="${book.description}">描述</p>
+                        <span class="badge bg-info" th:text="${book.category}">分类</span>
+                        <span class="badge bg-secondary ms-1" th:text="|${book.totalChapters} 章|">章节数</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a th:href="@{/books/{id}(id=${book.id})}" class="btn btn-primary w-100 btn-sm">
+                            <i class="bi bi-eye"></i> 查看详情
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${#lists.isEmpty(books)}" class="text-center py-5">
+            <i class="bi bi-emoji-frown" style="font-size: 3rem;"></i>
+            <p class="mt-2 text-muted">暂无书籍，请稍后再来</p>
+        </div>
+    </main>
+
+    <footer th:replace="fragments/layout :: footer"></footer>
+</body>
+</html>

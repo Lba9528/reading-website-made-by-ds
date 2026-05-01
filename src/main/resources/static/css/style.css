@@ -1,0 +1,96 @@
+/* Reading Website Custom Styles */
+
+/* Book card hover effect */
+.book-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Reading page content */
+.reading-content {
+    min-height: 400px;
+}
+.chapter-text {
+    font-size: 1.1rem;
+    line-height: 2;
+    color: #333;
+}
+.chapter-text p {
+    text-indent: 2em;
+    margin-bottom: 1.2em;
+}
+
+/* Hero section gradient */
+.bg-primary {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%) !important;
+}
+
+/* Custom scrollbar for chapter list */
+.list-group::-webkit-scrollbar {
+    width: 6px;
+}
+.list-group::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+.list-group::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+.list-group::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Navbar active state */
+.navbar .nav-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+}
+
+/* Footer styling */
+footer {
+    margin-top: auto !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .chapter-text {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+    .display-4 {
+        font-size: 2rem;
+    }
+}
+
+/* Toast notification animation */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.alert {
+    animation: fadeInDown 0.3s ease;
+}
+
+/* Card image placeholder */
+.card-img-top .bi {
+    transition: transform 0.3s ease;
+}
+.card:hover .card-img-top .bi {
+    transform: scale(1.1);
+}
+
+/* Breadcrumb customization */
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+}
