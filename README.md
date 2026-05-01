@@ -252,8 +252,3 @@ MIT License
 
 1. **打开浏览器**，访问 [https://github.com/Lba9528/reading-website-made-by-ds](https://github.com/Lba9528/reading-website-made-by-ds)
 2. 点击仓库页面中的 **README.md** 文件（本文件），即可查看完整的申请材料
-3. **需要你补填的地方**：
-   - 申请文案中的 `【待填写】` 字段（应用场景）
-   - 按「二、截图指引」中的说明截取你的实际账单和工作流截图
-   - 将截图上传到 GitHub 仓库的 `docs/screenshots/` 目录下
-   - 在证明材料清单中勾选已完成的项
